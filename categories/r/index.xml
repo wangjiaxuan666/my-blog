@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Woney&#39;s Blog</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on Woney&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BBC 团队开发的bbc_style让你的图高大上起来</title>
+      <link>/2019/05/25/bbc-style-plot-for-you-fig-can-more-better/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/bbc-style-plot-for-you-fig-can-more-better/</guid>
+      <description>用于R图形的BBC视觉和数据新闻手册 如何创建BBC风格的图形 在BBC数据团队，我们开发了一个R包和一个R菜谱，使用R的ggplot2库，以我</description>
+    </item>
+    
+    <item>
+      <title>R语言绘图之ggplot2入门ppt</title>
+      <link>/2019/05/25/the-first-class-for-newer-to-learn-ggplot2/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/the-first-class-for-newer-to-learn-ggplot2/</guid>
+      <description>为什么我做这个PPT 主要因素是因为我受不了公司每次生信培训的绘图课程里，一直一来讲的都是base包绘图。什么，你不知道base包。就是安装R</description>
+    </item>
+    
+    <item>
+      <title>了解一下甲基化测序</title>
+      <link>/2019/05/25/1/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/1/</guid>
+      <description>了解一下甲基化 重亚硫酸氢盐测序（BS-Seq）或全基因组亚硫酸氢盐测序（WGBS）就是我们常说的甲基化测序，目前是用于检测基因组*DNA中的</description>
+    </item>
+    
+    <item>
+      <title>重要!相关性分析如何计算和理解</title>
+      <link>/2019/05/25/we-can-know-the-cor-by-r/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/we-can-know-the-cor-by-r/</guid>
+      <description>1. 前言 接触组学多了，感觉分析主要有两类，一个是基于被研究对象的位置和序列。一类是基于算法。前者比如说lncRNA与mRNA的antisens</description>
+    </item>
+    
+    <item>
+      <title>试一试用Rstudio编辑rmarkdown上传hugo博客</title>
+      <link>/2019/05/19/%E8%AF%95%E4%B8%80%E8%AF%95%E7%94%A8rstudio%E7%BC%96%E8%BE%91rmarkdown%E4%B8%8A%E4%BC%A0hugo%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/19/%E8%AF%95%E4%B8%80%E8%AF%95%E7%94%A8rstudio%E7%BC%96%E8%BE%91rmarkdown%E4%B8%8A%E4%BC%A0hugo%E5%8D%9A%E5%AE%A2/</guid>
+      <description>
+
+
+&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/2015/07/23/hello-r-markdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/2015/07/23/hello-r-markdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com. You can embed an R code chunk like this: summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ##</description>
+    </item>
+    
+  </channel>
+</rss>

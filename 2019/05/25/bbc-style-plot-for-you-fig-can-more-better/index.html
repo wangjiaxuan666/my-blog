@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>BBC 团队开发的bbc_style让你的图高大上起来</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  <link href="///disqus.com" rel="dns-prefetch">
+  <link href="//c.disquscdn.com" rel="dns-prefetch">
+  
+  <link href="//www.google-analytics.com" rel="dns-prefetch">
+  
+
+  
+
+  
+  <meta name="author" content="Jiaxuan Wang">
+  <meta name="description" content="用于R图形的BBC视觉和数据新闻手册 如何创建BBC风格的图形 在BBC数据团队，我们开发了一个R包和一个R菜谱，使用R的ggplot2库，以我">
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="BBC 团队开发的bbc_style让你的图高大上起来">
+    <meta name="twitter:description" content="用于R图形的BBC视觉和数据新闻手册 如何创建BBC风格的图形 在BBC数据团队，我们开发了一个R包和一个R菜谱，使用R的ggplot2库，以我">
+    <meta name="twitter:image" content="http://abego.test.upcdn.net/1556297953063.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="BBC 团队开发的bbc_style让你的图高大上起来">
+  <meta property="og:description" content="用于R图形的BBC视觉和数据新闻手册 如何创建BBC风格的图形 在BBC数据团队，我们开发了一个R包和一个R菜谱，使用R的ggplot2库，以我">
+  <meta property="og:url" content="/2019/05/25/bbc-style-plot-for-you-fig-can-more-better/">
+  <meta property="og:image" content="http://abego.test.upcdn.net/1556297953063.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/2019/05/25/bbc-style-plot-for-you-fig-can-more-better/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Woney&#39;s Blog">
+<meta name="msapplication-tooltip" content="Woney&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+	<a role="button" aria-label="Go to comments" title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment" aria-hidden="true"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">Woney&#39;s Blog</h2>
+  
+  <p class="subtitle">生活 学习 工作</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">分类</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">主页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/resume/">简历</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://github.com/wangjiaxuan666">Github</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">BBC 团队开发的bbc_style让你的图高大上起来</h1>
+      <p class="post-meta">@Jiaxuan Wang · May 25, 2019 · 16 min read</p>
+    </header>
+    <article class="post-content">
+
+<!--在BBC数据团队，我们开发了一个R包和一个R菜谱，使用R的ggplot2库，以我们的内部风格创建出版就绪图形的过程，这是一个更可重复的过程，并使新手更容易到R来创建图形。-->
+
+<h1 id="用于r图形的bbc视觉和数据新闻手册">用于R图形的BBC视觉和数据新闻手册</h1>
+
+<h2 id="如何创建bbc风格的图形">如何创建BBC风格的图形</h2>
+
+<p>在BBC数据团队，我们开发了一个R包和一个R菜谱，使用R的ggplot2库，以我们的内部风格创建出版就绪图形的过程，这是一个更可重复的过程，并使新手更容易到R来创建图形。</p>
+
+<p>下面的食谱应该有希望帮助任何想要制作这样的图形的人：</p>
+
+<p><img src="http://abego.test.upcdn.net/1556297953063.png" alt="1556297953063" /></p>
+
+<p>我们将了解如何将这些图形的各种元素组合在一起，但<strong>让我们首先让管理员远离&hellip;</strong></p>
+
+<h3 id="加载您需要的所有库">加载您需要的所有库</h3>
+
+<p>本手册中的一些步骤 - 以及通常在R中创建图表 - 需要安装和加载某些软件包。因此，您不必逐个安装和加载它们，您可以使用包中的<code>p_load</code>函数使用<code>pacman</code>以下代码一次性加载它们。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">#用pacman中的加载函数，其实我也不知道这个比library好到哪里去了</span>
+<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#f92672">require</span>(pacman))install.packages(<span style="color:#e6db74">&#34;pacman&#34;</span>)
+pacman<span style="color:#f92672">::</span>p_load(<span style="color:#e6db74">&#39;dplyr&#39;</span>, <span style="color:#e6db74">&#39;tidyr&#39;</span>, <span style="color:#e6db74">&#39;gapminder&#39;</span>, <span style="color:#e6db74">&#39;ggplot2&#39;</span>,  <span style="color:#e6db74">&#39;ggalt&#39;</span>, <span style="color:#e6db74">&#39;forcats&#39;</span>, <span style="color:#e6db74">&#39;R.utils&#39;</span>, <span style="color:#e6db74">&#39;png&#39;</span>, <span style="color:#e6db74">&#39;grid&#39;</span>, <span style="color:#e6db74">&#39;ggpubr&#39;</span>, <span style="color:#e6db74">&#39;scales&#39;</span>,<span style="color:#e6db74">&#39;bbplot&#39;</span>)</code></pre></div>
+<h3 id="安装bbplot包">安装bbplot包</h3>
+
+<p><code>bbplot</code>不在CRAN上，所以你必须直接从Github安装它<code>devtools</code>。</p>
+
+<p>如果您没有<code>devtools</code>安装软件包，则还必须在下面的代码中运行第一行。</p>
+
+<pre><code># install.packages('devtools')
+devtools::install_github('bbc/bbplot')
+</code></pre>
+
+<p>有关<code>bbplot</code>查看<a href="https://github.com/bbc/bbplot">软件包的Github存储库的</a>更多信息，但有关如何使用软件包及其功能的大部分详细信息详述如下。</p>
+
+<p>下载软件包并成功安装后，您可以创建图表。</p>
+
+<h3 id="bbplot包如何工作">bbplot包如何工作？</h3>
+
+<p>该软件包有两个功能，<code>bbc_style()</code>和<code>finalise_plot()</code>。</p>
+
+<p><code>bbc_style()</code>：没有参数，并在创建绘图后添加到ggplot&rsquo;链&rsquo;。它的作用通常是将文本大小，字体和颜色，轴线，轴文本，边距和许多其他标准图表组件转换为BBC样式，这是根据设计团队的建议和反馈制定的。</p>
+
+<p>请注意，折线图中的线条颜色或条形图条形图的颜色不是从<code>bbc_style()</code>函数中开箱即用的，而是需要在其他标准<code>ggplot</code>图表函数中明确设置。</p>
+
+<p>下面的代码显示了如何<code>bbc_style()</code>在标准图表生成工作流程中使用它。这是一个非常简单的折线图的示例，使用<code>gapminder</code>包中的数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">#Data for chart from gapminder package</span>
+line_df <span style="color:#f92672">&lt;-</span> gapminder <span style="color:#f92672">%&gt;%</span>
+  filter(country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Malawi&#34;</span>) 
+
+<span style="color:#75715e">#Make plot</span>
+line <span style="color:#f92672">&lt;-</span> ggplot(line_df, aes(x <span style="color:#f92672">=</span> year, y <span style="color:#f92672">=</span> lifeExp)) <span style="color:#f92672">+</span>
+  geom_line(colour <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#1380A1&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+  geom_hline(yintercept <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, colour<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#333333&#34;</span>) <span style="color:#f92672">+</span>
+  bbc_style() <span style="color:#f92672">+</span>
+  labs(title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Living longer&#34;</span>,
+       subtitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Life expectancy in Malawi 1952-2007&#34;</span>)</code></pre></div>
+<p><img src="http://abego.test.upcdn.net/1556298117607.png" alt="1556298117607" /></p>
+
+<p>这是<code>bbc_style()</code>功能实际上在幕后做的事情。它实质上修改了<code>theme</code>函数中的某些参数<code>ggplot2</code>。</p>
+
+<p>例如，第一个参数是设置绘图的title元素的字体，大小，字体和颜色。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## function () </span>
+<span style="color:#75715e">## {</span>
+<span style="color:#75715e">##     font &lt;- &#34;Helvetica&#34;</span>
+<span style="color:#75715e">##     ggplot2::theme(plot.title = ggplot2::element_text(family = font, </span>
+<span style="color:#75715e">##         size = 28, face = &#34;bold&#34;, color = &#34;#222222&#34;), plot.subtitle = ggplot2::element_text(family = font, </span>
+<span style="color:#75715e">##         size = 22, margin = ggplot2::margin(9, 0, 9, 0)), plot.caption = ggplot2::element_blank(), </span>
+<span style="color:#75715e">##         legend.position = &#34;top&#34;, legend.text.align = 0, legend.background = ggplot2::element_blank(), </span>
+<span style="color:#75715e">##         legend.title = ggplot2::element_blank(), legend.key = ggplot2::element_blank(), </span>
+<span style="color:#75715e">##         legend.text = ggplot2::element_text(family = font, size = 18, </span>
+<span style="color:#75715e">##             color = &#34;#222222&#34;), axis.title = ggplot2::element_blank(), </span>
+<span style="color:#75715e">##         axis.text = ggplot2::element_text(family = font, size = 18, </span>
+<span style="color:#75715e">##             color = &#34;#222222&#34;), axis.text.x = ggplot2::element_text(margin = ggplot2::margin(5, </span>
+<span style="color:#75715e">##             b = 10)), axis.ticks = ggplot2::element_blank(), </span>
+<span style="color:#75715e">##         axis.line = ggplot2::element_blank(), panel.grid.minor = ggplot2::element_blank(), </span>
+<span style="color:#75715e">##         panel.grid.major.y = ggplot2::element_line(color = &#34;#cbcbcb&#34;), </span>
+<span style="color:#75715e">##         panel.grid.major.x = ggplot2::element_blank(), panel.background = ggplot2::element_blank(), </span>
+<span style="color:#75715e">##         strip.background = ggplot2::element_rect(fill = &#34;white&#34;), </span>
+<span style="color:#75715e">##         strip.text = ggplot2::element_text(size = 22, hjust = 0))</span>
+<span style="color:#75715e">## }</span>
+<span style="color:#75715e">## &lt;environment: namespace:bbplot&gt;</span></code></pre></div>
+<p>您可以通过调用<code>theme</code>具有所需参数的函数来修改图表的这些设置，或添加其他主题参数- 但请注意，要使其工作，您必须*在*调用<code>bbc_style</code>函数*后*调用它。否则<code>bbc_style()</code>将覆盖它。</p>
+
+<p>这将通过向<code>bbc_style()</code>函数中包含的内容添加额外的主题参数来添加一些网格线。整本食谱中有许多类似的例子。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">theme(panel.grid.major.x <span style="color:#f92672">=</span> element_line(color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#cbcbcb&#34;</span>), 
+        panel.grid.major.y<span style="color:#f92672">=</span>element_blank())</code></pre></div>
+<h3 id="保存完成的图表">保存完成的图表</h3>
+
+<p>将<code>bbc_style()</code>图表添加到图表后，还有一个步骤可以让您的图表准备好发布。<code>finalise_plot()</code>，<code>bbplot</code>包的第二个功能，将左对齐标题，副标题，并在图的右下角添加一个源和一个图像的页脚。它还会将其保存到您指定的位置。该函数有五个参数：</p>
+
+<p>以下是函数参数： <code>finalise_plot(plot_name, source, save_filepath, width_pixels = 640, height_pixels = 450)</code></p>
+
+<ul>
+<li><code>plot_name</code>：你已经叫你的情节，比如图表实例变量名以上<code>plot_name</code>会<code>&quot;line&quot;</code></li>
+<li><code>source</code>：要显示在绘图左下角的源文本。您需要<code>&quot;Source:&quot;</code>在它之前键入单词，因此例如<code>source = &quot;Source: ONS&quot;</code>是正确的方法。</li>
+<li><code>save_filepath</code>：您希望图形保存到的精确文件路径，包括最后的<code>.png</code>扩展名。这取决于您的工作目录以及您是否在特定的R项目中。一个示例文件路径是：<code>Desktop/R_projects/charts/line_chart.png</code>。</li>
+<li><code>width_pixels</code>：默认情况下，此值设置为640px，因此，如果希望图表具有不同的宽度，请仅调用此参数，并指定所需的宽度。</li>
+<li><code>height_pixels</code>：默认情况下，此值设置为450px，因此，如果希望图表具有不同的高度，请仅调用此参数，并指定所需的值。</li>
+<li><code>logo_image_path</code>：此参数指定图表右下角的图像/徽标的路径。默认情况下，占位符PNG文件的背景与绘图的背景颜色相匹配，因此如果您希望它显示没有徽标，请不要指定参数。如果要添加自己的徽标，只需指定PNG文件的路径即可。该包装的编写考虑了广泛而薄的图像。</li>
+</ul>
+
+<p><code>finalise_plot()</code>在标准工作流程中如何使用的示例。一旦您创建并最终确定了图表数据，标题并添加了该函数，就会调用此函数<code>bbc_style()</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">finalise_plot(plot_name <span style="color:#f92672">=</span> my_line_plot,
+              <span style="color:#f92672">source</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Source: Gapminder&#34;</span>,
+              save_filepath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;filename_that_my_plot_should_be_saved_to.png&#34;</span>,
+              width_pixels <span style="color:#f92672">=</span> <span style="color:#ae81ff">640</span>,
+              height_pixels <span style="color:#f92672">=</span> <span style="color:#ae81ff">450</span>,
+              logo_image_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;placeholder.png&#34;</span>)</code></pre></div>
+<p>因此，一旦你创建了你的情节并且相对满意它，你可以使用该<code>finalise_plot()</code>函数进行最后的调整并保存你的图表，以便你可以在RStudio之外查看它。</p>
+
+<p>值得一提的是，在早期这样做是个好主意，因为文本和其他元素的位置无法在RStudio Plots面板中准确呈现，因为这取决于您希望绘图的大小和宽高比，因此保存它并打开文件可以准确地表示图形的外观。</p>
+
+<p>finalise_plot（）函数不仅可以保存您的图表，还可以左对齐标题和副标题，这是BBC图形的标准，在右侧添加带有徽标的页脚，并允许您在左侧输入源文本。</p>
+
+<p>那么如何保存上面创建的示例图？</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">finalise_plot(plot_name <span style="color:#f92672">=</span> line,
+              <span style="color:#f92672">source</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Source: Gapminder&#34;</span>,
+              save_filepath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;images/line_plot_finalised_test.png&#34;</span>,
+              width_pixels <span style="color:#f92672">=</span> <span style="color:#ae81ff">640</span>,
+              height_pixels <span style="color:#f92672">=</span> <span style="color:#ae81ff">550</span>)</code></pre></div>
+<hr />
+
+<h2 id="制作折线图">制作折线图</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">#Prepare data</span>
+line_df <span style="color:#f92672">&lt;-</span> gapminder <span style="color:#f92672">%&gt;%</span>
+  filter(country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;China&#34;</span>) 
+
+<span style="color:#75715e">#Make plot</span>
+line <span style="color:#f92672">&lt;-</span> ggplot(line_df, aes(x <span style="color:#f92672">=</span> year, y <span style="color:#f92672">=</span> lifeExp)) <span style="color:#f92672">+</span>
+  geom_line(colour <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#1380A1&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+  geom_hline(yintercept <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, colour<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#333333&#34;</span>) <span style="color:#f92672">+</span>
+  bbc_style() <span style="color:#f92672">+</span>
+  labs(title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Living longer&#34;</span>,
+       subtitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Life expectancy in China 1952-2007&#34;</span>)</code></pre></div>
+<p><img src="http://abego.test.upcdn.net/1556298166214.png" alt="1556298166214" /></p>
+
+<h2 id="制作一个多线图">制作一个多线图</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">#Prepare data</span>
+multiple_line_df <span style="color:#f92672">&lt;-</span> gapminder <span style="color:#f92672">%&gt;%</span>
+  filter(country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;China&#34;</span> <span style="color:#f92672">|</span> country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;United States&#34;</span>) 
+
+<span style="color:#75715e">#Make plot</span>
+multiple_line <span style="color:#f92672">&lt;-</span> ggplot(multiple_line_df, aes(x <span style="color:#f92672">=</span> year, y <span style="color:#f92672">=</span> lifeExp, colour <span style="color:#f92672">=</span> country)) <span style="color:#f92672">+</span>
+  geom_line(size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+  geom_hline(yintercept <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, colour<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#333333&#34;</span>) <span style="color:#f92672">+</span>
+  scale_colour_manual(values <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>(<span style="color:#e6db74">&#34;#FAAB18&#34;</span>, <span style="color:#e6db74">&#34;#1380A1&#34;</span>)) <span style="color:#f92672">+</span>
+  bbc_style() <span style="color:#f92672">+</span>
+  labs(title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Living longer&#34;</span>,
+       subtitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Life expectancy in China and the US&#34;</span>)</code></pre></div>
+<p><img src="http://abego.test.upcdn.net/1556298193746.png" alt="1556298193746" /></p>
+
+<h2 id="制作条形图">制作条形图</h2>
+
+<pre><code>#Prepare data
+bar_df &lt;- gapminder %&gt;%
+  filter(year == 2007 &amp; continent == &quot;Africa&quot;) %&gt;%
+  arrange(desc(lifeExp)) %&gt;%
+  head(5)
+
+#Make plot
+bars &lt;- ggplot(bar_df, aes(x = country, y = lifeExp)) +
+  geom_bar(stat=&quot;identity&quot;, 
+           position=&quot;identity&quot;, 
+           fill=&quot;#1380A1&quot;) +
+  geom_hline(yintercept = 0, size = 1, colour=&quot;#333333&quot;) +
+  bbc_style() +
+  labs(title=&quot;Reunion is highest&quot;,
+       subtitle = &quot;Highest African life expectancy, 2007&quot;)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556298233958.png" alt="1556298233958" /></p>
+
+<h2 id="制作堆积条形图">制作堆积条形图</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">#prepare data</span>
+stacked_df <span style="color:#f92672">&lt;-</span> gapminder <span style="color:#f92672">%&gt;%</span> 
+  filter(year <span style="color:#f92672">==</span> <span style="color:#ae81ff">2007</span>) <span style="color:#f92672">%&gt;%</span>
+  mutate(lifeExpGrouped <span style="color:#f92672">=</span> <span style="color:#66d9ef">cut</span>(lifeExp, 
+                    breaks <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">65</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">90</span>),
+                    labels <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>(<span style="color:#e6db74">&#34;Under 50&#34;</span>, <span style="color:#e6db74">&#34;50-65&#34;</span>, <span style="color:#e6db74">&#34;65-80&#34;</span>, <span style="color:#e6db74">&#34;80+&#34;</span>))) <span style="color:#f92672">%&gt;%</span>
+  group_by(continent, lifeExpGrouped) <span style="color:#f92672">%&gt;%</span>
+  summarise(continentPop <span style="color:#f92672">=</span> <span style="color:#66d9ef">sum</span>(<span style="color:#66d9ef">as.numeric</span>(pop)))
+
+<span style="color:#75715e">#set order of stacks by changing factor levels</span>
+stacked_df<span style="color:#f92672">$</span>lifeExpGrouped <span style="color:#f92672">=</span> <span style="color:#66d9ef">factor</span>(stacked_df<span style="color:#f92672">$</span>lifeExpGrouped, levels <span style="color:#f92672">=</span> <span style="color:#66d9ef">rev</span>(<span style="color:#66d9ef">levels</span>(stacked_df<span style="color:#f92672">$</span>lifeExpGrouped)))
+
+<span style="color:#75715e">#create plot</span>
+stacked_bars <span style="color:#f92672">&lt;-</span> ggplot(data <span style="color:#f92672">=</span> stacked_df, 
+                       aes(x <span style="color:#f92672">=</span> continent,
+                           y <span style="color:#f92672">=</span> continentPop,
+                           fill <span style="color:#f92672">=</span> lifeExpGrouped)) <span style="color:#f92672">+</span>
+  geom_bar(stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;identity&#34;</span>, 
+           position <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fill&#34;</span>) <span style="color:#f92672">+</span>
+  bbc_style() <span style="color:#f92672">+</span>
+  scale_y_continuous(labels <span style="color:#f92672">=</span> scales<span style="color:#f92672">::</span>percent) <span style="color:#f92672">+</span>
+  scale_fill_viridis_d(direction <span style="color:#f92672">=</span> <span style="color:#ae81ff">-1</span>) <span style="color:#f92672">+</span>
+  geom_hline(yintercept <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, colour <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#333333&#34;</span>) <span style="color:#f92672">+</span>
+  labs(title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;How life expectancy varies&#34;</span>,
+       subtitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;% of population by life expectancy band, 2007&#34;</span>) <span style="color:#f92672">+</span>
+  theme(legend.position <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;top&#34;</span>, 
+        legend.justification <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;left&#34;</span>) <span style="color:#f92672">+</span>
+  guides(fill <span style="color:#f92672">=</span> guide_legend(reverse <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>))</code></pre></div>
+<p><img src="http://abego.test.upcdn.net/1556298295234.png" alt="1556298295234" /></p>
+
+<p>此示例显示了比例，但您可能希望制作显示数字值的堆积条形图 - 这很容易更改！</p>
+
+<p>传递给<code>position</code>参数的值将确定堆积图表是显示比例还是实际值。</p>
+
+<p><code>position = &quot;fill&quot;</code>将按比例绘制堆栈，并<code>position = &quot;identity&quot;</code>绘制数值。</p>
+
+<h2 id="制作分组条形图">制作分组条形图</h2>
+
+<p>制作分组条形图与制作条形图非常相似。</p>
+
+<p>你只需要改变<code>position = &quot;identity&quot;</code>对<code>position = &quot;dodge&quot;</code>，并设置<code>fill</code>美观，而不是：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">#Prepare data</span>
+grouped_bar_df <span style="color:#f92672">&lt;-</span> gapminder <span style="color:#f92672">%&gt;%</span>
+  filter(year <span style="color:#f92672">==</span> <span style="color:#ae81ff">1967</span> <span style="color:#f92672">|</span> year <span style="color:#f92672">==</span> <span style="color:#ae81ff">2007</span>) <span style="color:#f92672">%&gt;%</span>
+  select(country, year, lifeExp) <span style="color:#f92672">%&gt;%</span>
+  spread(year, lifeExp) <span style="color:#f92672">%&gt;%</span>
+  mutate(gap <span style="color:#f92672">=</span> <span style="color:#e6db74">`2007`</span> <span style="color:#f92672">-</span> <span style="color:#e6db74">`1967`</span>) <span style="color:#f92672">%&gt;%</span>
+  arrange(desc(gap)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#66d9ef">head</span>(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">%&gt;%</span>
+  gather(key <span style="color:#f92672">=</span> year, 
+         value <span style="color:#f92672">=</span> lifeExp,
+         <span style="color:#f92672">-</span>country,
+         <span style="color:#f92672">-</span>gap) 
+  
+<span style="color:#75715e">#Make plot</span>
+grouped_bars <span style="color:#f92672">&lt;-</span> ggplot(grouped_bar_df, 
+                       aes(x <span style="color:#f92672">=</span> country, 
+                           y <span style="color:#f92672">=</span> lifeExp, 
+                           fill <span style="color:#f92672">=</span> <span style="color:#66d9ef">as.factor</span>(year))) <span style="color:#f92672">+</span>
+  geom_bar(stat<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;identity&#34;</span>, position<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dodge&#34;</span>) <span style="color:#f92672">+</span>
+  geom_hline(yintercept <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, colour<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#333333&#34;</span>) <span style="color:#f92672">+</span>
+  bbc_style() <span style="color:#f92672">+</span>
+  scale_fill_manual(values <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>(<span style="color:#e6db74">&#34;#1380A1&#34;</span>, <span style="color:#e6db74">&#34;#FAAB18&#34;</span>)) <span style="color:#f92672">+</span>
+  labs(title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;We&#39;re living longer&#34;</span>,
+       subtitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Biggest life expectancy rise, 1967-2007&#34;</span>)</code></pre></div>
+<p><img src="http://abego.test.upcdn.net/1556298323487.png" alt="1556298323487" /></p>
+
+<h2 id="制作哑铃图">制作哑铃图</h2>
+
+<p>另一种显示差异的方法是哑铃图：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">library</span>(<span style="color:#e6db74">&#34;ggalt&#34;</span>)
+<span style="color:#f92672">library</span>(<span style="color:#e6db74">&#34;tidyr&#34;</span>)
+
+<span style="color:#75715e">#Prepare data</span>
+dumbbell_df <span style="color:#f92672">&lt;-</span> gapminder <span style="color:#f92672">%&gt;%</span>
+  filter(year <span style="color:#f92672">==</span> <span style="color:#ae81ff">1967</span> <span style="color:#f92672">|</span> year <span style="color:#f92672">==</span> <span style="color:#ae81ff">2007</span>) <span style="color:#f92672">%&gt;%</span>
+  select(country, year, lifeExp) <span style="color:#f92672">%&gt;%</span>
+  spread(year, lifeExp) <span style="color:#f92672">%&gt;%</span>
+  mutate(gap <span style="color:#f92672">=</span> <span style="color:#e6db74">`2007`</span> <span style="color:#f92672">-</span> <span style="color:#e6db74">`1967`</span>) <span style="color:#f92672">%&gt;%</span>
+  arrange(desc(gap)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#66d9ef">head</span>(<span style="color:#ae81ff">10</span>)
+
+<span style="color:#75715e">#Make plot</span>
+ggplot(dumbbell_df, aes(x <span style="color:#f92672">=</span> <span style="color:#e6db74">`1967`</span>, xend <span style="color:#f92672">=</span> <span style="color:#e6db74">`2007`</span>, y <span style="color:#f92672">=</span> reorder(country, gap), group <span style="color:#f92672">=</span> country)) <span style="color:#f92672">+</span> 
+  geom_dumbbell(colour <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#dddddd&#34;</span>,
+                size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>,
+                colour_x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#FAAB18&#34;</span>,
+                colour_xend <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#1380A1&#34;</span>) <span style="color:#f92672">+</span>
+  bbc_style() <span style="color:#f92672">+</span> 
+  labs(title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;We&#39;re living longer&#34;</span>,
+       subtitle<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Biggest life expectancy rise, 1967-2007&#34;</span>)</code></pre></div>
+<p><img src="http://abego.test.upcdn.net/1556298595175.png" alt="1556298595175" /></p>
+
+<h2 id="制作直方图">制作直方图</h2>
+
+<pre><code>hist_df &lt;- gapminder %&gt;%
+  filter(year == 2007)
+
+ggplot(hist_df, aes(lifeExp)) +
+  geom_histogram(binwidth = 5, colour = &quot;white&quot;, fill = &quot;#1380A1&quot;) +
+  geom_hline(yintercept = 0, size = 1, colour=&quot;#333333&quot;) +
+  bbc_style() +
+  scale_x_continuous(limits = c(35, 95),
+                     breaks = seq(40, 90, by = 10),
+                     labels = c(&quot;40&quot;, &quot;50&quot;, &quot;60&quot;, &quot;70&quot;, &quot;80&quot;, &quot;90 years&quot;)) +
+  labs(title = &quot;How life expectancy varies&quot;,
+       subtitle = &quot;Distribution of life expectancy in 2007&quot;)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299692588.png" alt="1556299692588" /></p>
+
+<h2 id="更改图例">更改图例</h2>
+
+<h3 id="删除图例">删除图例</h3>
+
+<p>删除图例成为一个 - 最好使用文本注释直接标记数据。</p>
+
+<p>使用<code>guides(colour=FALSE)</code>去除传说特定的审美（更换<code>colour</code>有关美学）。</p>
+
+<pre><code>multiple_line + guides(colour=FALSE)
+</code></pre>
+
+<p>您还可以使用<code>theme(legend.position = &quot;none&quot;)</code>以下方式一次性删除所有图例：</p>
+
+<pre><code>multiple_line + theme(legend.position = &quot;none&quot;)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299712214.png" alt="1556299712214" /></p>
+
+<h3 id="更改图例的位置">更改图例的位置</h3>
+
+<p>图例的默认位置位于图表的顶部。将其移动到图表外部的左侧，右侧或底部：</p>
+
+<pre><code>multiple_line + theme(legend.position = &quot;right&quot;)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299738001.png" alt="1556299738001" /></p>
+
+<p>要确切地了解我们希望我们的图例去哪里，而不是指定“右”或“顶部”来更改图例在图表中出现的位置的一般位置，我们可以给它特定的坐标。</p>
+
+<p>例如，<code>legend.position=c(0.98,0.1)</code>将图例移动到右下角。作为参考，c（0,0）在左下方，c（1,0）在右下方，c（0,1）在左上方，依此类推）。找到确切的位置可能涉及一些试验和错误。</p>
+
+<p>要检查图例在最终图中的确切位置，您必须检查运行<code>finalise_plot()</code>函数后保存的文件，因为该位置将与图的尺寸相关。</p>
+
+<pre><code>  multiple_line + theme(legend.position = c(0.115,1.05),
+                      legend.direction = &quot;horizontal&quot;) +  
+  labs(title=&quot;Living longer&quot;,
+       subtitle = &quot;Life expectancy in China and the US\n&quot;)
+</code></pre>
+
+<p>要使图例与图表的左侧齐平，可能更容易为图例设置负左边距<code>legend.margin</code>。语法是<code>margin(top, right, bottom, left)</code>。</p>
+
+<p>您将不得不尝试找到正确的数字来设置图表的保证金 - 将其保存<code>finalise_plot()</code>并查看其外观。</p>
+
+<pre><code>  + theme(legend.margin = margin(0, 0, 0, -200))
+</code></pre>
+
+<h3 id="删除图例标题">删除图例标题</h3>
+
+<p>通过调整你的方式删除图例标题<code>theme()</code>。不要忘记，为了使主题发生任何变化，必须在你打电话后添加<code>bbc_style()</code>！</p>
+
+<pre><code>+ theme(legend.title = element_blank())
+</code></pre>
+
+<h3 id="颠倒传奇的顺序">颠倒传奇的顺序</h3>
+
+<p>有时您需要更改图例的顺序，以匹配条形图的顺序。为此，您需要<code>guides</code>：</p>
+
+<pre><code>+ guides(fill = guide_legend(reverse = TRUE))
+</code></pre>
+
+<h3 id="重新排列图例的布局">重新排列图例的布局</h3>
+
+<p>如果您的图例中有许多值，则可能需要根据美学原因重新排列布局。</p>
+
+<p>您可以指定希望图例作为参数的行数<code>guides</code>。例如，下面的代码片段将创建一个包含4行的图例：</p>
+
+<pre><code>+ guides(fill = guide_legend(nrow = 4, byrow = T))
+</code></pre>
+
+<p>您可能需要改变<code>fill</code>在上面的代码不管在审美你的传奇是描述，例如<code>size</code>，<code>colour</code>等等。</p>
+
+<h3 id="更改图例符号的外观">更改图例符号的外观</h3>
+
+<p>您可以通过添加参数<code>override.aes</code>来覆盖图例符号的默认外观，而无需更改它们在图中的显示方式<code>guides</code>。</p>
+
+<p>下面将使图例符号的大小更大，例如：</p>
+
+<pre><code>+ guides(fill = guide_legend(override.aes = list(size = 4))))
+</code></pre>
+
+<h3 id="在图例标签之间添加空格">在图例标签之间添加空格</h3>
+
+<p>默认的ggplot图例在各个图例项之间几乎没有空格。不理想。</p>
+
+<p>您可以通过手动更改比例标签来添加空间。</p>
+
+<p>例如，如果您将地理位置的颜色设置为依赖于您的数据，您将获得颜色的图例，并且您可以使用以下代码段调整确切的标签以获得额外的空间：</p>
+
+<pre><code>+ scale_colour_manual(labels = function(x) paste0(&quot; &quot;, x, &quot;  &quot;))
+</code></pre>
+
+<p>如果您的图例显示不同的内容，则需要相应地更改代码。例如，对于填充，您将需要<code>scale_fill_manual()</code>。</p>
+
+<h2 id="更改轴">更改轴</h2>
+
+<h3 id="翻转绘图的坐标">翻转绘图的坐标</h3>
+
+<p>添加<code>coord_flip()</code>以使竖条水平：</p>
+
+<pre><code>bars &lt;- bars + coord_flip()
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299785326.png" alt="1556299785326" /></p>
+
+<h3 id="添加-删除网格线">添加/删除网格线</h3>
+
+<p>默认主题仅包含y轴的网格线。添加x网格线<code>panel.grid.major.x = element_line</code>。</p>
+
+<p>（同样，删除y轴上的网格线<code>panel.grid.major.y=element_blank()</code>）</p>
+
+<pre><code>bars &lt;- bars + coord_flip() +
+  theme(panel.grid.major.x = element_line(color=&quot;#cbcbcb&quot;), 
+        panel.grid.major.y=element_blank())
+## Coordinate system already present. Adding new coordinate system, which will replace the existing one.
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299805690.png" alt="1556299805690" /></p>
+
+<h3 id="手动更改轴文本">手动更改轴文本</h3>
+
+<p>您可以使用<code>scale_y_continuous</code>或更改轴文本标签<code>scale_x_continuous</code>：</p>
+
+<pre><code>bars &lt;- bars + scale_y_continuous(limits=c(0,85),
+                   breaks = seq(0, 80, by = 20),
+                   labels = c(&quot;0&quot;,&quot;20&quot;, &quot;40&quot;, &quot;60&quot;, &quot;80 years&quot;))
+
+bars
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299827435.png" alt="1556299827435" /></p>
+
+<p>这也将指定绘图的限制以及您想要轴刻度的位置。</p>
+
+<h3 id="在轴标签上添加千位分隔符">在轴标签上添加千位分隔符</h3>
+
+<p>您可以指定您希望轴文本具有带参数的千位分隔符<code>scale_y_continuous</code>。</p>
+
+<p>有两种方法可以做到这一点，一种在基础R中，有点繁琐：</p>
+
+<pre><code>+ scale_y_continuous(labels = function(x) format(x, big.mark = &quot;,&quot;,
+                                                 scientific = FALSE))
+</code></pre>
+
+<p>第二种方式依赖于<code>scales</code>包，但更简洁：</p>
+
+<pre><code>+ scale_y_continuous(labels = scales::comma)
+</code></pre>
+
+<h3 id="将百分比符号添加到轴标签">将百分比符号添加到轴标签</h3>
+
+<p>这也很容易添加一个参数<code>scale_y_continuous</code>：</p>
+
+<pre><code>+ scale_y_continuous(labels = function(x) paste0(x, &quot;%&quot;))
+</code></pre>
+
+<h3 id="更改绘图限制">更改绘图限制</h3>
+
+<p>明确设置绘图限制的漫长方法<code>scale_y_continuous</code>如上所述。但是，如果您不需要指定中断或标签，那么使用<code>xlim</code>或的简写方式是<code>ylim</code>：</p>
+
+<pre><code>bars + ylim(c(0,500))
+## Scale for 'y' is already present. Adding another scale for 'y', which
+## will replace the existing scale.
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299857069.png" alt="1556299857069" /></p>
+
+<h3 id="添加轴标题">添加轴标题</h3>
+
+<p>我们的默认主题没有轴标题，但您可能希望手动添加它们。这是通过修改来完成的<code>theme()</code>- 请注意，您必须在调用后执行此操作，<code>bbc_style()</code>否则您的更改将被覆盖：</p>
+
+<pre><code>+ theme(axis.title = element_text(size = 18))
+</code></pre>
+
+<h3 id="修改轴标题">修改轴标题</h3>
+
+<p>如果添加轴标题，则默认情况下它们将是数据集中的列名称。您可以将此更改为您在通话中所需的任何内容<code>labs()</code>。</p>
+
+<p>例如，如果您希望x轴标题为“我是一个轴”而您的y轴标签为空白，则格式如下：</p>
+
+<pre><code>+ labs(x = &quot;I'm an axis&quot;, 
+       y = &quot;&quot;)
+</code></pre>
+
+<h3 id="添加轴刻度">添加轴刻度</h3>
+
+<p>您可以通过添加加轴的刻度<code>axis.ticks.x</code>或<code>axis.ticks.y</code>您<code>theme</code>：</p>
+
+<pre><code>multiple_line + theme(
+  axis.ticks.x = element_line(colour = &quot;#333333&quot;), 
+  axis.ticks.length =  unit(0.26, &quot;cm&quot;))
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299883164.png" alt="1556299883164" /></p>
+
+<h2 id="添加注释">添加注释</h2>
+
+<h3 id="添加注释-1">添加注释</h3>
+
+<p>向绘图添加文本注释的最简单方法是使用<code>geom_label</code>：</p>
+
+<pre><code>multiple_line + geom_label(aes(x = 1980, y = 45, label = &quot;I'm an annotation!&quot;), 
+                           hjust = 0, 
+                           vjust = 0.5, 
+                           colour = &quot;#555555&quot;, 
+                           fill = &quot;white&quot;, 
+                           label.size = NA, 
+                           family=&quot;Helvetica&quot;, 
+                           size = 6)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299912533.png" alt="1556299912533" /></p>
+
+<p>注释的确切位置将取决于<code>x</code>和<code>y</code>参数（这有点繁琐！）和文本对齐，使用<code>hjust</code>和<code>vjust</code>- 但更多的是在下面。</p>
+
+<p>在标签中的必要位置添加换行符<code>\n</code>，并设置行高<code>lineheight</code>。</p>
+
+<pre><code>multiple_line &lt;- multiple_line + 
+  geom_label(aes(x = 1980, y = 45, label = &quot;I'm quite a long\nannotation over\nthree rows&quot;), 
+             hjust = 0, 
+             vjust = 0.5, 
+             lineheight = 0.8,
+             colour = &quot;#555555&quot;, 
+             fill = &quot;white&quot;, 
+             label.size = NA, 
+             family=&quot;Helvetica&quot;, 
+             size = 6) 
+</code></pre>
+
+<p>让我们在那里获得直接标签！</p>
+
+<pre><code>multiple_line &lt;- multiple_line + 
+  theme(legend.position = &quot;none&quot;) + 
+  xlim(c(1950, 2011)) +
+  geom_label(aes(x = 2007, y = 79, label = &quot;US&quot;), 
+             hjust = 0, 
+             vjust = 0.5, 
+             colour = &quot;#1380A1&quot;, 
+             fill = &quot;white&quot;, 
+             label.size = NA, 
+             family=&quot;Helvetica&quot;, 
+             size = 6) +
+  geom_label(aes(x = 2007, y = 72, label = &quot;China&quot;), 
+             hjust = 0, 
+             vjust = 0.5, 
+             colour = &quot;#FAAB18&quot;, 
+             fill = &quot;white&quot;, 
+             label.size = NA, 
+             family=&quot;Helvetica&quot;, 
+             size = 6)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299944753.png" alt="1556299944753" /></p>
+
+<h3 id="左对齐-右对齐文本">左对齐/右对齐文本</h3>
+
+<p>参数<code>hjust</code>和<code>vjust</code>dictate水平和垂直文本对齐。它们的值可以介于0和1之间，其中0表示左对齐，1表示右对齐（或垂直对齐的底部和顶部对齐）。</p>
+
+<h3 id="根据您的数据添加标签">根据您的数据添加标签</h3>
+
+<p>上述向图表添加注释的方法允许您准确指定x和y坐标。如果我们想在特定的地方添加文本注释，这非常有用，但重复起来非常繁琐。</p>
+
+<p>幸运的是，如果要为所有数据点添加标签，只需根据数据设置位置即可。</p>
+
+<p>假设我们要在条形图中添加数据标签：</p>
+
+<pre><code>labelled.bars &lt;- bars +
+  geom_label(aes(x = country, y = lifeExp, label = round(lifeExp, 0)),
+             hjust = 1, 
+             vjust = 0.5, 
+             colour = &quot;white&quot;, 
+             fill = NA, 
+             label.size = NA, 
+             family=&quot;Helvetica&quot;, 
+             size = 6)
+
+labelled.bars
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299963835.png" alt="1556299963835" /></p>
+
+<p>上面的代码会自动为每个大陆添加一个文本标签，而不必添加<code>geom_label</code>五个单独的时间。</p>
+
+<p>（如果你对为什么我们把它设置<code>x</code>为大陆和<code>y</code>预期寿命感到困惑，当图表看起来反过来绘制它们时，这是因为我们已经使用了<code>coord_flip()</code>你的情节坐标，你可以<a href="https://github.com/bbc/vjdata.rcookbook#flip-the-coordinates-of-a-plot">在这里阅读更多信息</a>。）</p>
+
+<h3 id="将左对齐标签添加到条形图">将左对齐标签添加到条形图</h3>
+
+<p>如果您更愿意为条形添加左对齐标签，只需<code>x</code>根据数据设置参数，但<code>y</code>直接使用数值指定参数。</p>
+
+<p>确切的值<code>y</code>取决于您的数据范围。</p>
+
+<pre><code>labelled.bars.v2 &lt;- bars +
+  geom_label(aes(x = country, 
+                 y = 4, 
+                 label = round(lifeExp, 0)),
+             hjust = 0, 
+             vjust = 0.5, 
+             colour = &quot;white&quot;, 
+             fill = NA, 
+             label.size = NA, 
+             family=&quot;Helvetica&quot;, 
+             size = 6)
+
+labelled.bars.v2
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299978620.png" alt="1556299978620" /></p>
+
+<h3 id="添加一行">添加一行</h3>
+
+<p>添加一行<code>geom_segment</code>：</p>
+
+<pre><code>multiple_line + geom_segment(aes(x = 1979, y = 45, xend = 1965, yend = 43), 
+                             colour = &quot;#555555&quot;, 
+                             size=0.5)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556299995247.png" alt="1556299995247" /></p>
+
+<p>该<code>size</code>参数指定了线的厚度。</p>
+
+<h3 id="添加曲线">添加曲线</h3>
+
+<p>对于曲线，请使用<code>geom_curve</code>而不是<code>geom_segment</code>：</p>
+
+<pre><code>multiple_line + geom_curve(aes(x = 1979, y = 45, xend = 1965, yend = 43), 
+                           colour = &quot;#555555&quot;, 
+                           curvature = -0.2,
+                           size=0.5)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300264869.png" alt="1556300264869" /></p>
+
+<p>所述<code>curvature</code>参数设置曲线的量：0是一条直线，负值给左手曲线而正值给右手曲线。</p>
+
+<h3 id="添加箭头">添加箭头</h3>
+
+<p>将一条线转换为箭头非常简单：只需将<code>arrow</code>参数添加到您的<code>geom_segment</code>或<code>geom_curve</code>：</p>
+
+<pre><code>multiple_line + geom_curve(aes(x = 1979, y = 45, xend = 1965, yend = 43), 
+                             colour = &quot;#555555&quot;, 
+                             size=0.5, 
+                             curvature = -0.2,
+                             arrow = arrow(length = unit(0.03, &quot;npc&quot;)))
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300289196.png" alt="1556300289196" /></p>
+
+<p><code>unit</code>设置箭头大小的第一个参数。</p>
+
+<h3 id="在整个图中添加一条线">在整个图中添加一条线</h3>
+
+<p>在整个绘图中添加直线的最简单方法是<code>geom_vline()</code>，对于垂直线，或<code>geom_hline()</code>对于水平线。</p>
+
+<p>可选的附加参数允许您指定行的大小，颜色和类型（默认选项是实心的）。</p>
+
+<pre><code>multiple_line + geom_hline(yintercept = 10, size = 1, colour = &quot;red&quot;, linetype = &quot;dashed&quot;)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300317100.png" alt="1556300317100" /></p>
+
+<p>在这个例子中，这条线显然没有增加多少，但是如果你想要突出显示某些东西，例如阈值水平或平均值，这很有用。</p>
+
+<p>它也特别有用，因为我们的设计风格 - 正如您在本页图表中已经注意到的那样 - 是为我们的图表添加垂直或水平基线。这是要使用的代码：</p>
+
+<pre><code>+ geom_hline(yintercept = 0, size = 1, colour = &quot;#333333&quot;)
+</code></pre>
+
+<h2 id="使用小倍数">使用小倍数</h2>
+
+<p>使用ggplot可以很容易地创建小的多个图表：它被称为分面。</p>
+
+<h3 id="面">面</h3>
+
+<p>如果您想要通过某个变量进行可视化分割的数据，则需要使用<code>facet_wrap</code>或<code>facet_grid</code>。</p>
+
+<p>将要除以的变量添加到此代码行：<code>facet_wrap( ~ variable)</code>。</p>
+
+<p>facet wrap的另一个参数<code>ncol</code>允许您指定列数：</p>
+
+<pre><code>#Prepare data
+facet &lt;- gapminder %&gt;%
+  filter(continent != &quot;Americas&quot;) %&gt;%
+  group_by(continent, year) %&gt;%
+  summarise(pop = sum(as.numeric(pop)))
+
+#Make plot
+facet_plot &lt;- ggplot() +
+  geom_area(data = facet, aes(x = year, y = pop, fill = continent)) +
+  scale_fill_manual(values = c(&quot;#FAAB18&quot;, &quot;#1380A1&quot;,&quot;#990000&quot;, &quot;#588300&quot;)) + 
+  facet_wrap( ~ continent, ncol = 5) + 
+  scale_y_continuous(breaks = c(0, 2000000000, 4000000000),
+                     labels = c(0, &quot;2bn&quot;, &quot;4bn&quot;)) +
+  bbc_style() +
+  geom_hline(yintercept = 0, size = 1, colour = &quot;#333333&quot;) +
+  theme(legend.position = &quot;none&quot;,
+        axis.text.x = element_blank()) +
+  labs(title = &quot;Asia's rapid growth&quot;,
+       subtitle = &quot;Population growth by continent, 1952-2007&quot;)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300338949.png" alt="1556300338949" /></p>
+
+<h3 id="自由秤">自由秤</h3>
+
+<p>你可能已经在上面的图表中注意到，人口相对较少的大洋洲已完全消失。</p>
+
+<p>默认情况下，构面使用小倍数上的固定轴刻度。最好在小倍数上使用相同的y轴刻度，以避免误导，但有时您可能需要为每个倍数单独设置这些，我们可以通过添加参数来完成<code>scales = &quot;free&quot;</code>。</p>
+
+<p>如果您只想释放一个轴的刻度，请将参数设置为<code>free_x</code>或<code>free_y</code>。</p>
+
+<pre><code>#Make plot
+facet_plot_free &lt;- ggplot() +
+  geom_area(data = facet, aes(x = year, y = pop, fill = continent)) +
+  facet_wrap(~ continent, scales = &quot;free&quot;) + 
+  bbc_style() +
+  scale_fill_manual(values = c(&quot;#FAAB18&quot;, &quot;#1380A1&quot;,&quot;#990000&quot;, &quot;#588300&quot;)) +
+  geom_hline(yintercept = 0, size = 1, colour = &quot;#333333&quot;) +
+  theme(legend.position = &quot;none&quot;,
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank()) +
+  labs(title = &quot;It's all relative&quot;,
+       subtitle = &quot;Relative population growth by continent,1952-2007&quot;)
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300355129.png" alt="1556300355129" /></p>
+
+<h2 id="完全做别的事">完全做别的事</h2>
+
+<h3 id="增加或减少保证金">增加或减少保证金</h3>
+
+<p>你可以改变你的情节的几乎任何元素 - 标题，字幕，图例 - 或情节本身的边距。</p>
+
+<p>您通常不需要更改主题的默认边距，但如果这样做，则语法为<code>theme(ELEMENT=element_text(margin=margin(0, 5, 10, 0)))</code>。</p>
+
+<p>数字分别指定了上边距，右边距，下边距和左边距 - 但您也可以直接指定要更改的边距。例如，让我们尝试为副标题提供一个超大的底部边距：</p>
+
+<pre><code>bars + theme(plot.subtitle=element_text(margin=margin(b=75)))
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300367821.png" alt="1556300367821" /></p>
+
+<p>嗯&hellip;也许不是。</p>
+
+<h3 id="导出绘图和x轴边距">导出绘图和x轴边距</h3>
+
+<p>当您生成超出默认高度的绘图时，您需要考虑x轴边距大小<code>bbplot</code>，即450px。例如，如果您要创建一个包含大量条形图的条形图，并希望确保每个条形图和标签之间有一些喘息空间，则可能就是这种情况。如果您确保将边距保留为具有更高高度的图的边距，那么您可以在轴和标签之间获得更大的间隙。</p>
+
+<p>以下是我们在条形图的边距和高度（适用于coord_flip）时的工作指南：</p>
+
+<table>
+<thead>
+<tr>
+<th>size</th>
+<th>t</th>
+<th>b</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>550px</td>
+<td>5</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>650px</td>
+<td>7</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>750px</td>
+<td>10</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>850px</td>
+<td>14</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+
+<p>因此，您需要做的是将此代码添加到图表中，例如，您希望绘图的高度为650px而不是450px。</p>
+
+<pre><code>bar_chart_tall &lt;- bars + theme(axis.text.x = element_text(margin=margin(t = 7, b = 10)))
+bar_chart_tall
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300386565.png" alt="1556300386565" /></p>
+
+<p>虽然它的可能性要小得多，但是如果您确实想要为折线图执行等效操作并将其导出到大于默认高度，则需要执行相同的操作，但是根据上表将t的值更改为负值。</p>
+
+<h3 id="按大小重新排序栏">按大小重新排序栏</h3>
+
+<p>默认情况下，R会按字母顺序显示您的数据，但按大小排列它，而不是很简单：只是包装<code>reorder()</code>围绕<code>x</code>或<code>y</code>要重新排列变量，并指定要通过重新安排它的变数。</p>
+
+<p>例如<code>x = reorder(country, pop)</code>。升序是默认值，但您可以通过<code>desc()</code>绕过您订购的变量来将其更改为降序：</p>
+
+<pre><code>bars &lt;- ggplot(bar_df, aes(x = reorder(country, lifeExp), y = lifeExp)) +
+  geom_bar(stat=&quot;identity&quot;, position=&quot;identity&quot;, fill=&quot;#1380A1&quot;) +
+  geom_hline(yintercept = 0, size = 1, colour=&quot;#333333&quot;) +
+  bbc_style() +
+  coord_flip() +
+  labs(title=&quot;Reunion is highest&quot;,
+       subtitle = &quot;Highest African life expectancy, 2007&quot;) +
+  theme(panel.grid.major.x = element_line(color=&quot;#cbcbcb&quot;), 
+        panel.grid.major.y=element_blank())
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300406598.png" alt="1556300406598" /></p>
+
+<h3 id="手动重新排序栏">手动重新排序栏</h3>
+
+<p>有时，您需要以不按字母顺序排列或按大小重新排序的方式对数据进行排序。</p>
+
+<p>要正确订购，您需要在制作绘图之前设置数据的因子水平。</p>
+
+<p>指定要在<code>levels</code>参数中绘制类别的顺序：</p>
+
+<pre><code>dataset$column &lt;- factor(dataset$column, levels = c(&quot;18-24&quot;,&quot;25-64&quot;,&quot;65+&quot;))
+</code></pre>
+
+<p>您还可以使用它来重新排序堆积条形图的堆栈。</p>
+
+<h3 id="彩条有条不紊">彩条有条不紊</h3>
+
+<p>您可以有条件地设置美学值，如填充，alpha，大小<code>ifelse()</code>。</p>
+
+<p>语法是<code>fill=ifelse(logical_condition, fill_if_true, fill_if_false)</code>。</p>
+
+<pre><code>ggplot(bar_df, 
+       aes(x = reorder(country, lifeExp), y = lifeExp)) +
+  geom_bar(stat=&quot;identity&quot;, position=&quot;identity&quot;, fill=ifelse(bar_df$country == &quot;Mauritius&quot;, &quot;#1380A1&quot;, &quot;#dddddd&quot;)) +
+  geom_hline(yintercept = 0, size = 1, colour=&quot;#333333&quot;) +
+  bbc_style() +
+  coord_flip() +
+  labs(title=&quot;Reunion is highest&quot;,
+       subtitle = &quot;Highest African life expectancy, 2007&quot;) +
+  theme(panel.grid.major.x = element_line(color=&quot;#cbcbcb&quot;), 
+        panel.grid.major.y=element_blank()) 
+</code></pre>
+
+<p><img src="http://abego.test.upcdn.net/1556300420880.png" alt="1556300420880" /></p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="tag">数据分析</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 Woney&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-XXXXXXXX-X', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据分析 on Woney&#39;s Blog</title>
+    <link>/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
+    <description>Recent content in 数据分析 on Woney&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BBC 团队开发的bbc_style让你的图高大上起来</title>
+      <link>/2019/05/25/bbc-style-plot-for-you-fig-can-more-better/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/bbc-style-plot-for-you-fig-can-more-better/</guid>
+      <description>用于R图形的BBC视觉和数据新闻手册 如何创建BBC风格的图形 在BBC数据团队，我们开发了一个R包和一个R菜谱，使用R的ggplot2库，以我</description>
+    </item>
+    
+    <item>
+      <title>R语言绘图之ggplot2入门ppt</title>
+      <link>/2019/05/25/the-first-class-for-newer-to-learn-ggplot2/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/the-first-class-for-newer-to-learn-ggplot2/</guid>
+      <description>为什么我做这个PPT 主要因素是因为我受不了公司每次生信培训的绘图课程里，一直一来讲的都是base包绘图。什么，你不知道base包。就是安装R</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/2015/07/23/hello-r-markdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/2015/07/23/hello-r-markdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com. You can embed an R code chunk like this: summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ##</description>
+    </item>
+    
+  </channel>
+</rss>

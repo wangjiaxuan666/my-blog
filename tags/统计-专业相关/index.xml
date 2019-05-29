@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>统计, 专业相关 on Woney&#39;s Blog</title>
+    <link>/tags/%E7%BB%9F%E8%AE%A1-%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/</link>
+    <description>Recent content in 统计, 专业相关 on Woney&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E7%BB%9F%E8%AE%A1-%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>重要!相关性分析如何计算和理解</title>
+      <link>/2019/05/25/we-can-know-the-cor-by-r/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/we-can-know-the-cor-by-r/</guid>
+      <description>1. 前言 接触组学多了，感觉分析主要有两类，一个是基于被研究对象的位置和序列。一类是基于算法。前者比如说lncRNA与mRNA的antisens</description>
+    </item>
+    
+  </channel>
+</rss>

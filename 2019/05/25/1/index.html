@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>了解一下甲基化测序</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  <link href="///disqus.com" rel="dns-prefetch">
+  <link href="//c.disquscdn.com" rel="dns-prefetch">
+  
+  <link href="//www.google-analytics.com" rel="dns-prefetch">
+  
+
+  
+
+  
+  <meta name="author" content="Jiaxuan Wang">
+  <meta name="description" content="了解一下甲基化 重亚硫酸氢盐测序（BS-Seq）或全基因组亚硫酸氢盐测序（WGBS）就是我们常说的甲基化测序，目前是用于检测基因组*DNA中的">
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="了解一下甲基化测序">
+    <meta name="twitter:description" content="了解一下甲基化 重亚硫酸氢盐测序（BS-Seq）或全基因组亚硫酸氢盐测序（WGBS）就是我们常说的甲基化测序，目前是用于检测基因组*DNA中的">
+    <meta name="twitter:image" content="/media/wenxian.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="了解一下甲基化测序">
+  <meta property="og:description" content="了解一下甲基化 重亚硫酸氢盐测序（BS-Seq）或全基因组亚硫酸氢盐测序（WGBS）就是我们常说的甲基化测序，目前是用于检测基因组*DNA中的">
+  <meta property="og:url" content="/2019/05/25/1/">
+  <meta property="og:image" content="/media/wenxian.jpg">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/2019/05/25/1/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Woney&#39;s Blog">
+<meta name="msapplication-tooltip" content="Woney&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+	<a role="button" aria-label="Go to comments" title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment" aria-hidden="true"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">Woney&#39;s Blog</h2>
+  
+  <p class="subtitle">生活 学习 工作</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">分类</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">主页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/resume/">简历</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://github.com/wangjiaxuan666">Github</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">了解一下甲基化测序</h1>
+      <p class="post-meta">@Jiaxuan Wang · May 25, 2019 · 18 min read</p>
+    </header>
+    <article class="post-content">
+
+<!--重亚硫酸氢盐测序（BS-Seq）或全基因组亚硫酸氢盐测序（WGBS）就是我们常说的甲基化测序，目前是用于检测基因组DNA中的胞嘧啶甲基化的最成熟方案。在该方法中，用重亚硫酸氢钠处理基因组DNA，经过测序，在基因组水平上提供胞嘧啶甲基化的单碱基分辨率。在亚硫酸氢盐处理时，未甲基化的C脱氨基成U，U在测序后转化为T。同时，甲基化的C拒绝脱氨作用，并被测序为C。然后可以通过比较处理和未处理的序列来确定甲基化胞嘧啶的位置。DNA的亚硫酸氢盐处理将未甲基化的C转化为T，导致序列复杂性降低，这对SBS合成系为原理的illumina二代测序来说，是非常不利的。所以需要非常准确的深度测序才可以减轻这种复杂性的损失。-->
+
+<h1 id="了解一下甲基化">了解一下甲基化</h1>
+
+<p>重亚硫酸氢盐测序（<code>BS-Seq</code>）或全基因组亚硫酸氢盐测序（<code>WGBS</code>）就是我们常说的甲基化测序，目前是用于检测基因组*<code>DNA</code><em>中的胞嘧啶甲基化的最成熟方案。在该方法中，用<code>重亚硫酸氢钠</code>处理基因组</em><code>DNA</code>*，经过测序，在基因组水平上提供<code>胞嘧啶</code>甲基化的单碱基分辨率。在亚硫酸氢盐处理时，未甲基化的*C*脱氨基成*U*，*U*在测序后转化为*T*。同时，甲基化的*C*拒绝脱氨作用，并被测序为*C<em>。然后可以通过比较处理和未处理的序列来确定甲基化胞嘧啶的位置。</em><code>DNA</code>*的亚硫酸氢盐处理将未甲基化的*C*转化为*T*，导致序列复杂性降低，这对*SBS*合成系为原理的<code>illumina</code>二代测序来说，是非常不利的。所以需要非常准确的深度测序才可以减轻这种复杂性的损失。</p>
+
+<p>优点：</p>
+
+<ul>
+<li>整个基因组中的<code>CpG</code>和<code>非CpG</code>甲基化以单碱基分辨率覆盖</li>
+<li>覆盖密集，密度较小和重复区域的<code>5mC</code></li>
+</ul>
+
+<p>缺点：</p>
+
+<ul>
+<li>亚硫酸氢盐将未甲基化的胞嘧啶转化为胸[^1]苷，降低序列复杂性，这使得难以产生比对</li>
+<li>在亚硫酸氢盐转化时，错过胞嘧啶转化为胸苷的<code>NPs</code></li>
+<li>亚硫酸氢盐转化率不区分<code>5mC</code>和<code>5hmC</code>
+
+<br /></li>
+</ul>
+
+<p>我的非覆</p>
+
+<blockquote>
+<p>Methods Link:</p>
+
+<ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/pubmed/8127720">BS-Seq: Feil R., Charlton J., Bird A. P., Walter J. and Reik W. (1994) Methylation analysis on individual chromosomes: improved protocol for bisulphite genomic sequencing. Nucleic Acids Res 22: 695-696</a></li>
+<li><a href="http://www.ncbi.nlm.nih.gov/pubmed/22120008">Bisulfite-seq: Berman B. P., Weisenberger D. J., Aman J. F., Hinoue T., Ramjan Z., et al. (2012) Regions of focal <code>DNA</code> hypermethylation and long-range hypomethylation in colorectal cancer coincide with nuclear lamina-associated domains. Nat Genet 44: 40-46</a></li>
+<li><a href="http://www.ncbi.nlm.nih.gov/pubmed/19829295">WGBS: Lister R., Pelizzola M., Dowen R. H., Hawkins R. D., Hon G., et al. (2009) Human <code>DNA</code> methylomes at base resolution show widespread epigenomic differences. Nature 462: 315-322</a></li>
+</ul>
+</blockquote>
+
+<p><img src="http://abego.test.upcdn.net/1557208808354.png" alt="1557208808354" /></p>
+
+<p>图中展现的是*RNA*的四种甲基化研究手段，但是红色框内的同样适用于我们今天<strong>重点</strong>讲的*<code>DNA</code>*的胞嘧啶甲基化。</p>
+
+<h1 id="wgbs全基因组甲基化测序">WGBS全基因组甲基化测序</h1>
+
+<p>得到* <code>DNA</code>* 样品后，首先对样品进行质量检测。样品质量检测合格后，进行 BS 文库构建，具体步骤如下：
+1. 基因组 *<code>DNA</code> *超声打断成 <code>100-300bp</code> 的片段
+2. <em><code>DNA</code></em> 片段末端修复、3’端加 A 碱基，连接测序接头；
+3. 采用 <em>ZYMO EZ <code>DNA</code> Methylation-Gold kit</em> 进行<code>Bisulfite</code> 处理；
+4. 脱盐处理后切胶回收，并进行文库片段大小选择，<em>PCR</em> 扩增后再次进行文库片段大小选择；文库构建完成后，对文库进行质量检测。质检合格的文库将用于上机测序。</p>
+
+<p>将测序结果与参考基因组比对，比对上唯一位置的序列用于后续标准信息分析及个性化分析。得到下机数据后，首先进行数据过滤，去掉低质量数据，得到可用数据。完成数据过滤后，需检测可用数据量是否符合合同要求。检测合格后，将可用数据与参考基因组进行比对，得到比对结果。在确认比对质量合格后，使用唯一比对数据得到全基因组* C* 碱基甲基化信息，进行信息分析处理，得到标准信息分析结果和个性化分析结果。</p>
+
+<p><img src="http://abego.test.upcdn.net/flow_a.png" alt="img" /></p>
+
+<blockquote>
+<p>以上实验和分析步骤主要来自基迪奥公司的结题报告，官网：<a href="http://www.genedenovo.com/">http://www.genedenovo.com/</a></p>
+</blockquote>
+
+<h2 id="质控标准">质控标准</h2>
+
+<p>相比于其他流程，甲基化测序的非常特殊的一点是，需要加入*lambda <code>DNA</code>*（lambda噬菌体<code>DNA</code>）进行<code>Bisulfite</code>（重亚硫酸盐）处理效率检测。这是因为理论上，*lambda <code>DNA</code>*上的*C*均为非甲基化的*C*，在<code>Bisulfite</code>处理后理论上全部*C*将被转化成*U*（即测序中的*T*），但处理转化失败的位点，则会依然保留*C*不变。</p>
+
+<p>所以统计*C*位点被转换成T的比率就可以得知重亚硫酸盐的处理效率，一般要大于99%。</p>
+
+<h2 id="分析内容">分析内容</h2>
+
+<p>甲基化的分析内容很多，尤其又分为三种甲基化位点（CG, CHH, CHG），三个作用区域（UP, DOWN, BODY），还有两种分析思路（甲基化区域和甲基化位点），以及各种容易混淆的概念。比如：</p>
+
+<p>你能分清甲基化位点这四种概念嘛？</p>
+
+<ul>
+<li>甲基化位点的数量：发生甲基化的 C 位点的数目</li>
+<li>甲基化位点的比例：甲基化 C 位点数目 / 总 C 位点</li>
+<li>位点甲基化值（水平）：发生甲基化的 C 位点，支持发生甲基化的 reads 数 / 测到这个位点的 reads 数目</li>
+<li>所有位点的平均甲基化值：在基因组水平上，所有发生甲基化的 c 位点的位点甲基化值（水平）的平均值。</li>
+</ul>
+
+<p>仔细一一说，实在太久了，简单总结下：</p>
+
+<p><img src="http://abego.test.upcdn.net/1557212905254.png" alt="1557212905254" /></p>
+
+<p>我最近再看一篇《Genome Biology》的关于草莓发育的甲基化文章，《Genome Biology》自然就不用多说了，组学期刊中的数得着。而且我最近发现很多甲基化的相关的文章都是《Genome Biology》，不知道是不是我搜索的关系。</p>
+
+<h1 id="文章解读">文章解读</h1>
+
+<p><img src="http://abego.test.upcdn.net/1557212989750.png" alt="1557212989750" /></p>
+
+<p>《草莓果实成熟期间<code>RdDM</code>的下调》</p>
+
+<h2 id="数据探索">数据探索</h2>
+
+<h3 id="草莓果实的-dna-甲基化组织">草莓果实的<code>DNA</code>甲基化组织</h3>
+
+<p>为了研究草莓的甲基化水平，作者取了全果实（包括叶和果实，果蒂）进行了全基因组亚硫酸氢盐测序，得到了<code>DNA</code>甲基化的单碱基分辨率图。从未成熟阶段到成熟阶段（<code>Fa1</code>-<code>Fa3</code>）的果实用两个生物学重复序列测序（图  <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig1">1a</a>）。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557216386152.png" alt="1557216386152" /></p>
+
+<p>由于栽培的八倍体草莓（*F. ananassa*）和野生二倍体草莓（*F. vesca*）之间的高度共线性，以及F. ananassa八倍体栽培种缺乏组装良好的基因组，我们使用*F. vesca*的基因组作为参考。在我们的分析。*F. vesca*的基因组约为240 MB（2 <em>n</em>?= 14）。对于每个测序文库，产生至少100M配对末端读数（大约就15G的数据的量，60x的覆盖度），基因组覆盖&gt; 80％，大约10％的reads被定位到未甲基化的叶绿体基因组，并且重亚硫酸氢盐的转化率&gt; 99.6％。对每个甲基化组进行测序，染色体平均覆盖率 &gt; 10倍。本次测序的结果展示，测序覆盖度和深度和前人研究的拟南芥和番茄甲基化的实验相差无几。</p>
+
+<p>未成熟草莓果实的平均<code>DNA</code>甲基化率约为7.5％，低于番茄果实（22％），<code>mCG</code>，<code>mCHG</code>和<code>mCHH</code>的平均甲基化水平分别为40％，11％和2％。在植物中，转座因子（TE）和重复序列通常是高度甲基化的。为了研究草莓中<code>DNA</code>甲基化的基因组分布，作者使用RepeatScout从头注释了*F. vesca*基因组中的TEs和重复序列。草莓基因组中的TE和重复含量高于*拟南芥*，但低于水稻和番茄，与较大基因组往往具有较高重复序列比例的猜想一致。</p>
+
+<p>叶片的平均mC水平约为8％，略高于未成熟果实（7.5％）。叶子和果实在基因和TE周围表现出相似的<code>DNA</code>甲基化模式，但一般而言，叶子相对于果实具有更高的<code>DNA</code>甲基化水平。在基因密集的区域，甲基化水平低，而在转座子密集的区域，甲基化水平高。如下图：</p>
+
+<p><img src="http://abego.test.upcdn.net/1557286706433.png" alt="1557286706433" /></p>
+
+<p>根据前人的研究，基因在中型大小基因组的物种中，如番茄，基因与转座子具有更短的距离，距离越近，代表越有可能受到转座子的调控。而基因组小的物种，比如拟南芥，就会有更长的距离。这个假设是符合生物学逻辑的，但是在八倍体草莓中，这个基因与转座子的距离，却比番茄还短。作者认为可能是因为基因组的组装不好的问题（最强解释）。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557287992742.png" alt="1557287992742" /></p>
+
+<h3 id="草莓成熟期间-dna-甲基化的丧失">草莓成熟期间<code>DNA</code>甲基化的丧失</h3>
+
+<p>在番茄成熟期间<code>DNA</code>甲基化显着降低，为了研究草莓果实成熟过程中的<code>DNA</code>甲基化动力学，我们在三个不同阶段（<code>Fa1</code>-<code>Fa3</code>）比较草莓果实的<code>DNA</code>甲基化组，每个阶段有两个生物学重复。主成分分析（PCA）显示每个阶段的两个生物重复之间的一致性。我们发现，成熟过程中提示在<code>DNA</code>甲基化降低。这种减少发生在两个生物学重复中。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557288143940.png" alt="1557288143940" /></p>
+
+<p>同时作者也证明了在编码基因的转录起始位点（TSS）上游2kb的一直到转录终点（TES）后2kb的区域内，成熟过程中<code>Fa3</code>相比于<code>Fa1</code>，<code>DNA</code>甲基化水平降低。</p>
+
+<p>作者比较了<code>Fa1</code>和<code>Fa3</code>时期的果实甲基化水平，差异分析显示，一共有2766个DMR区域。其中2300个是下调的，466个DMR是发生上调的。对每一个生物学重复的差异变化的值，进行相关性分析，结果显示相关性强（智者见智吧）。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557294292571.png" alt="1557294292571" /></p>
+
+<p>作者为了探究甲基化水平的下调是否与甲基化类型相关，就分别看了三种甲基化类型之间的变化。结果表明，草莓在成熟过程中三个甲基化类型都会发生<code>DNA</code>甲基化水平的降低，这点和番茄类似。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557294684414.png" alt="1557294684414" /></p>
+
+<h3 id="验证甲基化数据">验证甲基化数据</h3>
+
+<p>基于以上结果，作者提出了在果实的发育过程中，甲基化水平的调控是起着非常重要的作用，一方面为了探究甲基化水平的调控机制，一方面又为了验证甲基化的数据，为后续的数据挖掘提供一个实验结果的支持。所以用<code>DNA</code>甲基化抑制剂5-azacytidine，处理草莓幼果。与空白处理相比，5-azacytidine处理的果实表现出早熟的表型。为了验证5-azacytidine处理，是否通过抑制果实中的<code>DNA</code>甲基化水平影响果实成熟，我们对空白组和5-azacytidine处理组，进行methylation-sensitive <code>qPCR</code>。</p>
+
+<p><code>qPCR</code>验证了两个基因，证明5-azacytidine处理的草莓果实，发生了显著的<code>DNA</code>甲基化水平降低。这些结果表明<code>DNA</code>低甲基化对草莓果实成熟很重要。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557409200004.png" alt="1557409200004" /></p>
+
+<blockquote>
+<p>这个methylation-sensitive <code>qPCR</code>很有意思，值得去研究一下实验方法，这个验证的基因数目，你懂的，不过表型从文献的图片上看是很明显的。</p>
+</blockquote>
+
+<h3 id="甲基化位点的基因组分布">甲基化位点的基因组分布</h3>
+
+<p>在<code>Fa1</code> -vs- <code>Fa3</code>比较组中，作者评估了DMR在基因组上的分布情况。随着草莓果实的成熟，作者发现在转录起始位点（TSS）上游区域的甲基化水平发生显著的降低。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557409739133.png" alt="1557409739133" /></p>
+
+<p>同时，作者也发现差异降低的DMR主要集中在基因的5&rsquo;-和3&rsquo;-区域中。相反，差异升高的DMR的分布没有表现出这样的模式。这些结果表明，成熟过程中的<code>DNA</code>低甲基化可能广泛参与到基因的调控过程中。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557410367912.png" alt="1557410367912" /></p>
+
+<p>到此作者发现了随着果实成熟，甲基化水平是整体上下降的。那么是是什么机制导致 这样的生物学现象呢，所以就做了这方面的探究，去更加深入的阐述这一生物学现象。</p>
+
+<h3 id="成熟过程中-rddm-途径基因的表达量降低">成熟过程中<code>RdDM</code>途径基因的表达量降低</h3>
+
+<p>在番茄中，成熟过程中<code>DNA</code>甲基化水平降低是由于<code>DNA</code>去甲基化酶SLDML2的表达量升高。在*拟南芥中*，主要是通过ROSR家族蛋白完成对5mC的清除。此外，IDM蛋白复合物可以调节ROS1的活性，促进去甲基化过程。</p>
+
+<p>在草莓中，发现这些基因在草莓中的同源基因，都没有在成熟过程中发生显著上调（作者没说，其实是下调的0.o）。这些结果表明草莓成熟期间的<code>DNA</code>低甲基化与<code>DNA</code>去甲基化途径基因的表达增加无关。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557477740116.png" alt="1557477740116" /></p>
+
+<p>去甲基化研究的进度不好，那就从甲基化入手，<code>DNA</code>去甲基化和<code>DNA</code>甲基化相互拮抗，动态调节植物<code>DNA</code>的甲基化水平。作者假设降低的<code>DNA</code>甲基化活性可能有助于草莓果实成熟期间的<code>DNA</code>低甲基化。为了验证这一假设，我们检查了<code>DNA</code>甲基化途径中涉及的基因的表达。</p>
+
+<p>在拟南芥中，<code>mCG</code>，<code>mCHG</code>和<code>mCHH</code>分别由甲基化转移酶1（MET1），CMT3和CMT2和重链甲基化酶（DRM）维持。</p>
+
+<p>同时，所有三种甲基化情况都可以通过由RNA介导的，从而影响<code>DNA</code>发生甲基化。 称为<code>RdDM</code>途径。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557495763126.png" alt="1557495763126" /></p>
+
+<p>通过RNA指导的<code>DNA</code>甲基化（<code>RdDM</code>）途径，主要有两个主要步骤：第一步是诱导产生<code>siRNA</code>。第二步，就是由<code>siRNA</code>引导发生<code>DNA</code>甲基化。RNA聚合酶IV转录组产生<code>siRNA</code>的前体，再通过DCL3（DICER-like家族蛋白）剪切前体形成成熟体的<code>siRNA</code>。在第二步骤中，<code>siRNA</code>可以结合ago家族蛋白去调控DRM甲基化蛋白的转录活性，从而完成对<code>DNA</code>的甲基化修饰。<code>DNA</code>甲基化状态可以通过<code>DNA</code>甲基转移酶和去甲基化酶动态调节。</p>
+
+<p>作者在草莓基因组中鉴定了8个<code>DNA</code>甲基转移酶基因，ok，随着成熟发育，基因的表达量符合预期。这些数据表明减少的<code>DNA</code>甲基化活性有助于成熟诱导的<code>DNA</code>低甲基化。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557496700818.png" alt="1557496700818" /></p>
+
+<h3 id="sirna在成熟发育中诱导dmr的差异下调">siRNA在成熟发育中诱导DMR的差异下调</h3>
+
+<p>上文刚刚提到了<code>siRNA</code>街道的<code>RdDM</code>甲基化途径，作者紧接着就做了<code>sRNA</code>测序。<code>sRNA</code>的长度分布和首位U碱基都得到了很好得验证（测序中A），说明测序质量合格。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557498234524.png" alt="1557498234524" /></p>
+
+<p>和甲基化分析部分一样，作者对<code>sRNA</code>得位置分布，以及和随机分布情况进行差异显著性分析。其实这篇文章我唯一不清楚得就是如何算出来这样一个随机数值（测序的数据已经有自己的分布，难道是随机从基因组中截取24nt的片段，抽取10w次不等来模拟随机的嘛），总之，作者发现<code>sRNA</code>主要分布在转录本的上下游区域，代表着<code>sRNA</code>肯定在调控基因表达中起着重要的作用。同时作者验证了与随机事件相比，成熟期间发生差异下调的DMR区域中有67％以上区域与<code>siRNA</code>簇有overlap。</p>
+
+<p>相比之下，只有17％的随机基因组区域与<code>siRNA</code>簇重叠，这表明成熟诱导的低DMRs与<code>siRNA</code>s显着相关（<em>p</em> ?&lt;0.01）</p>
+
+<p><img src="http://abego.test.upcdn.net/1557498819243.png" alt="1557498819243" /></p>
+
+<p>为了进一步研究<code>siRNA</code>介导的<code>DNA</code>甲基化与成熟发育中的<code>DNA</code>甲基化水平降低之间的关系，作者监测了成熟的低甲基化的DMRs中<code>siRNA</code>富集的情况。发现，<code>siRNA</code>的表达量水平从<code>FA1</code>到<code>FA3</code>降低。</p>
+
+<p>同时，发现<code>siRNA</code>的变化情况和甲基化水平的变化情况一致，这个图还是有点抽象，不过作者说什么就是什么啦。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557499209057.png" alt="1557499209057" /></p>
+
+<p>为了测试<code>RdDM</code>途径对草莓成熟的重要性，作者使用TRV介导的基因沉默来下调幼草莓果实中的*FvAGO4*。我们在*TRV2：：FvAGO4*果实与对照仅*TRV2*果实相比，观察到早期成熟表型，这一表型与<code>RdDM</code>在草莓成熟中活性降低导致低甲基化水平的猜测一致。这些分析表明，<code>RdDM</code>途径基因的表达量下调，导致<code>siRNA</code>积累减少，最终导致<code>RdDM</code>活性降低，从而促进<code>DNA</code>低甲基化和草莓成熟。</p>
+
+<blockquote>
+<p>这才是生物学故事啊</p>
+</blockquote>
+
+<p><img src="http://abego.test.upcdn.net/1557499448738.png" alt="1557499448738" /></p>
+
+<h3 id="dna甲基化变化与果实中基因表达的改变有关">DNA甲基化变化与果实中基因表达的改变有关</h3>
+
+<p>为了研究成熟诱导的<code>DNA</code>甲基化变化与基因表达之间的关系，作者做了<code>Fa1</code>和<code>Fa3</code>的果实转录组。一共有2316个差异表达的基因（adj_Pvalue &lt;?0.01)，其中包括899个上调DEGS，和1417下调的DEGS。</p>
+
+<p>接下来，检查了上调和下调DEG的<code>DNA</code>甲基化水平。我们发现，DEGs中的的大部分基因都是经历<code>DNA</code>甲基化水平从<code>FA1</code>到<code>FA3</code>降低（不知道你们能不能看出来，反正一眼扫过去，确实是蓝色的多一点）</p>
+
+<p><img src="http://abego.test.upcdn.net/1557500230519.png" alt="1557500230519" /></p>
+
+<p>这里是整体上描述了差异变化基因DEGs的差异甲基化情况，作者之前不是做了两个me-<code>qPCR</code>的基因嘛，正好拿来讨论一番，一来凑个内容，二来局部到点，彰显自己细致的研究。通过IGB图来展现基因的表达量与甲基化、<code>sRNA</code>之间的关系。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557500753517.png" alt="1557500753517" /></p>
+
+<p>既然知道差异基因，不做个富集分析，简直就是对不起组学文章这个头衔啊。做完富集分析之后，就要讨论生物学功能，这个才是考验老师的写作能力的重点。要不然富集分析谁都会做，但是经常遇到老师问，我怎么挑选，你能帮我挑选吗。自己的课题自己一定要把握啊，这么能让别人来挑。</p>
+
+<p><img src="http://abego.test.upcdn.net/1557500339021.png" alt="1557500339021" /></p>
+
+<blockquote>
+<p>Fruit ripening is a complex developmental process that involves numerous physiological, biochemical, and structural alterations. To understand how <code>DNA</code> methylation-associated gene regulation contributes to the ripening process, we performed Gene Ontology (GO) analysis for hypomethylated up- and downregulated DEGs. Up- and downregulated DEGs that are not hypomethylated served as controls (Fig. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig6">6</a>d). This analysis revealed that genes involved in the “regulation of anthocyanin biosynthetic process” are enriched in upregulated DEGs (Fig. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig6">6</a>d and Additional file <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#MOESM7">7</a>: Table S6), suggesting that <code>DNA</code> methylation may regulate fruit coloration during ripening. A previous study found that gene21343 (expansin-A8-like) is required for biosynthesis of the pigment anthocyanin during strawberry ripening [<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#CR25">25</a>], although the underlying molecular mechanism was unclear. Our results showed that gene21343 displayed decreased <code>DNA</code> methylation during ripening, and its expression was upregulated accordingly (Fig. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig6">6</a>b, Additional file <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#MOESM2">2</a>: Figure S6b). Cytokinin is important for early fruit development, and a recent study suggested that cytokinin accumulates during the ripening of kiwi, grape, and strawberry fruits [<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#CR26">26</a>]. Consistent with these findings, our analysis found that genes involved in the “cytokinin biosynthetic process” are enriched in the upregulated DEGs (Fig. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig6">6</a>d and Additional file <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#MOESM7">7</a>: Table S6). The endogenous content of ABA is known to increase substantially during strawberry ripening, and the application of an ABA synthesis inhibitor interrupts strawberry ripening [<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#CR8">8</a>]. Consistent with these observations, we found that genes involved in the “abscisic acid biosynthetic process” are enriched in the upregulated DEGs (Fig. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig6">6</a>d and Additional file <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#MOESM7">7</a>: Table S6). Several other ripening-related GO terms were also included in the upregulated DEGs, such as genes involved in the biosynthesis of flavor volatiles (Fig. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig6">6</a>d and Additional file <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#MOESM7">7</a>: Table S6).</p>
+
+<p>On the other hand, many genes need to be downregulated during ripening. For example, genes involved in photosynthesis are active and required in the early stages of fruit development, but are repressed during ripening to allow conversion of chloroplasts into chromoplasts, which are important for fruit coloration. The hypomethylated downregulated DEGs were enriched for “chlorophyll biosynthetic process,” suggesting that <code>DNA</code> hypomethylation may contribute to the decline in photosynthesis during ripening. We also found several GO terms related to cell wall biosynthesis and metabolism in hypomethylated downregulated DEGs. During early fruit development, genes involved in cell wall biosynthesis and modification are active to sustain fast cell division and cell enlargement, but these genes are not needed later during the ripening stage. Interestingly, the ripening-related GO terms were only enriched in hypomethylated DEGs, but not enriched in up- or down-DEGs without hypomethylation (Fig. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#Fig6">6</a>d and Additional file <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#MOESM7">7</a>: Table S6). Together, these analyses suggest that <code>DNA</code> methylation-mediated gene regulation controls many biological processes important for ripening.</p>
+</blockquote>
+
+<h2 id="材料与方法">材料与方法</h2>
+
+<h3 id="实验材料">实验材料</h3>
+
+<p><strong>物种</strong>：草莓（<em>Fragaria×ananassa</em> Duch.cv.Hongjia）</p>
+
+<p><strong>参考基因组：</strong>双倍体Fragaria vesca v1.1<a href="https://phytozome.jgi.doe.gov/pz/portal.html#!info?alias=Org_Fvesca">https://phytozome.jgi.doe.gov/pz/portal.html#!info?alias=Org_Fvesca</a></p>
+
+<p><strong>产地</strong>：浙江省海宁市浙江省农业科学院科研创新基地</p>
+
+<p><strong>取样时期</strong>：三个发育阶段的果实</p>
+
+<ol>
+<li>Fa1，绿色阶段，开花后约20天（DAB）;</li>
+<li>Fa2，中间红阶段，30DAB;</li>
+<li>Fa3，全红阶段，35DAB</li>
+</ol>
+
+<p>在收获当天转移到实验室后，选择具有均匀尺寸且无可见缺陷的果实。每个发育阶段使用8-12个果实混浑混合。两个生物学重复送去测序。</p>
+
+<p>对于DNA甲基化抑制剂处理，使用“Si gongzhu”草莓果实。在处理中，将溶解在含有0.01％Triton X-100的ddH 2 O中的20mM 5-阿杂胞苷（Sigma）直接喷洒在果实上。处理于6月8日，13日和18日进行。样品于6月23日拍摄。</p>
+
+<h3 id="甲基化pcr">甲基化PCR</h3>
+
+<p>根据试剂盒的说明，用McrBC消化基因组DNA（100ng）12小时。没有GTP的消化用作阴性对照。在65℃下酶灭活20分钟后，将10％的消化DNA用于定量实时PCR的每个PCR反应。</p>
+
+<h3 id="全基因组亚硫酸氢盐测序和数据分析">全基因组亚硫酸氢盐测序和数据分析</h3>
+
+<h4 id="文件构建">文件构建</h4>
+
+<p>使用DNeasy Plant Maxi Kit（Qiagen）从叶和果实中提取基因组DNA。</p>
+
+<p>使用Illumina HiSeq2500对样品进行测序。使用用于Illumina的NEBNext Ultra II DNA文库制备试剂盒和Epitect Plus DNA Bisulfite Kit（Qiagen）制备全基因组亚硫酸氢盐测序文库。</p>
+
+<p>简言之，将1μg基因组DNA在Covaris M220上超声处理成200~500bp片段。</p>
+
+<p>按照NEBNext Ultra II DNA文库制备试剂盒的制造商说明，对片段化的DNA进行末端修复，A尾和接头连接。</p>
+
+<p>然后使用Epitect Plus DNA Bisulfite Kit（Qiagen）在热循环仪上用亚硫酸氢钠处理接头连接的产物，具有以下程序：</p>
+
+<ol>
+<li>95°C 5分钟，</li>
+<li>60°C 25分钟，</li>
+<li>95°C 5分钟，</li>
+<li>60°C 85分钟，</li>
+<li>95°C 5分钟，</li>
+<li>60°C 175分钟</li>
+<li>95°C 5分钟，60°C 180 min，三个循环</li>
+<li>冷却至20°C</li>
+</ol>
+
+<p>然后使用Epitect Plus DNA Bisulfite Kit（Qiagen）清洁BS处理的DNA，并使用KAPA HiFi Hotstart ReadyMix进行PCR扩增<font color =red><code>6个循环</code></font>。最后使用来自Vazyme的磁珠清除扩增的文库。</p>
+
+<p>使用HiSeq PE Cluster Kit v4（Illumina）和HiSeq SBS Kit v4（250个循环）（Illumina）按照制造商的说明在HiSeq2500（Illumina）上以双端125bp模式对文库进行测序。</p>
+
+<h4 id="数据分析">数据分析：</h4>
+
+<p>对于数据分析，首先使用Trimmomatic修剪末端测序读数，去除Illumina衔接子和低质量碱基（质量评分&lt;20）。然后使用bsmap-2.87 将clean reads比对到Fragaria vesca的基因组上。采用默认的参数设置。</p>
+
+<p>用methratio.py（bsmap-2.87中包含的脚本）提取甲基化比率。</p>
+
+<p>仅考虑在所有文库中具有至少4个深度的胞嘧啶。窗口大小为200bp，步长为50bp的滑动窗口方法用于识别DMR。对每个窗口内的甲基化与未甲基化胞嘧啶进行Fisher精确检验。使用Benjamini-Hochberg调整后估计错误发现率（FDR）值。FDR &lt;0.05的窗口被定义为进一步分析的候选DMR。</p>
+
+<p>然后通过在所有三种情况下合并候选物并缩小至第一种和最后一种差异甲基化胞嘧啶（DMC）来调节DMR。用组合标准过滤最终的DMR：DMC数&gt; 3，平均甲基化差&gt; 0.15。为了将生物复制品纳入分析，我们计算了鲁棒指数作为每个DMR的公式，以测量重复之间的重复性。
+$$
+\mathrm{Robust}\kern0.5em \mathrm{index}=\frac{\left|{\log}_2{FC}_1-{\log}_2{FC}_2\right|}{\left|{\log}_2{FC}_1+{\log}_2{FC}_2\right|}
+$$
+FC 1和FC 2分别代表重复1和重复2中的差异甲基化倍数变化。具有较低鲁棒指数的DMR在差异甲基化方面更可靠。将单个重复中具有低深度的DMR的稳健指数指定为NA。我们通过稳健指数对DMR进行排名，  并分别重新分析前500和至少500可信的低DMR。</p>
+
+<h3 id="rna测序和数据分析">RNA测序和数据分析</h3>
+
+<p>用来自水果的TRIzol试剂（Ambion）提取总RNA。对于逆转录，使用qScript cDNA SuperMix试剂盒（Quanta），使用1μgRNA和oligo dT引物在20-μL反应中合成cDNA。对于RNA-seq，使用Illumina HiSeq2500在中国科学院上海植物胁迫生物学中心的基因组学核心设施中构建和测序文库。</p>
+
+<p>对于数据分析，使用STAR 将配对末端读数与*Fragaria vesca*基因组。使用默认参数比对。FeatureCounts 用于计算每个基因的映射片段（count值，不过这个软件第一次见）。DESeq 用于检测差异表达的基因。为了在*Fragaria vesca中*分配假定的基因功能，通过Phytozome数据库寻找同源基因。</p>
+
+<blockquote>
+<p>Phytozome：<a href="https://phytozome.jgi.doe.gov/pz/portal.html">https://phytozome.jgi.doe.gov/pz/portal.html</a></p>
+</blockquote>
+
+<h3 id="小rna测序和数据分析">小RNA测序和数据分析</h3>
+
+<p>用来自水果的TRIzol试剂（Ambion）提取总RNA。然后在变性聚丙烯酰胺凝胶上分离总RNA，切出&lt;100-nt级分并纯化用于标准小RNA文库制备。对于小RNA测序，使用Illumina HiSeq2500在中国科学院上海植物胁迫生物学中心的基因组学核心设施构建和测序文库。</p>
+
+<p>用Trimmomatic 修剪测序读数以去除含接头和低质量碱基（质量评分<20）。长度<18bp且长度> 30bp的读数被丢弃。24-nt读数被定位到*F. vesca*基因组并用Shortstack定义为siRNA簇[ <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1587-x#CR36">36</a> ]。通过总清洁读数对映射的读数进行标准化以进行进一步分析。</p>
+
+<blockquote>
+<p>Shortstack ：这个鉴定sRNA簇的软件值得留意</p>
+</blockquote>
+
+<h3 id="系统发育分析">系统发育分析</h3>
+
+<p>使用Phytozome注释的DNA甲基转移酶，DNA去甲基化酶和参与RdDM途径的基因的直系同源物构建了与MEGA相邻的系统发育树。</p>
+
+<blockquote>
+<p>常规操作</p>
+</blockquote>
+
+<h3 id="病毒诱导的基因沉默-vigs">病毒诱导的基因沉默（VIGS）</h3>
+
+<p>Liu等人描述了用于基因沉默的TRV载体pTRV1（pYL192）和pTRV2（pYL156）实验方案如Birch-Smith等人所述。将pTRV2载体与<em>FvAGO4的</em> PCR片段连接，然后转化到<em>A.tumefaciens</em> GV3101菌株中。分别用pTRV1，pTRV2和pTRV2衍生物pTRV2- *FvAGO4*转化土壤杆菌培养物（在25mg / L利福平和50mg / L卡那霉素过夜培养物中生长）。将土壤杆菌培养物渗入草莓的果梗中。</p>
+
+<blockquote>
+<p>没构建TRV质粒，不清楚，不过原理都是一样的</p>
+</blockquote>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/%E7%BB%9F%E8%AE%A1"><span class="tag">统计</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 Woney&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-XXXXXXXX-X', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+  </body>
+</html>

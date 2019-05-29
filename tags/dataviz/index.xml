@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dataviz on Woney&#39;s Blog</title>
+    <link>/tags/dataviz/</link>
+    <description>Recent content in dataviz on Woney&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>R语言绘图之ggplot2入门ppt</title>
+      <link>/2019/05/25/the-first-class-for-newer-to-learn-ggplot2/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/25/the-first-class-for-newer-to-learn-ggplot2/</guid>
+      <description>为什么我做这个PPT 主要因素是因为我受不了公司每次生信培训的绘图课程里，一直一来讲的都是base包绘图。什么，你不知道base包。就是安装R</description>
+    </item>
+    
+  </channel>
+</rss>
